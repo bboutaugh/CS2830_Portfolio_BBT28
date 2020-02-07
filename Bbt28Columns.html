@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<!--
+    Name: Brad Boutaugh
+    Pawprint: BBT28
+    Date: 2/6/20
+    Challenge 3: Multi-Column Layout
+-->
+
+<html lang="en-US">
+    <head>
+        <title>Bbt28Columns</title>
+        <meta charset="UTF-8">
+        <style>
+            .centered{
+                text-align: center;
+            }
+            
+            #main_wrapper
+            {
+                border: 6px solid powderblue;
+                border-radius: 10px;
+                width: 1101px;
+                padding: 8px;
+                margin: auto;
+            }
+            
+            .clear:after
+            {
+                content:"";
+                display: table;
+                clear: both;
+            }
+            
+            .row_wrapper
+            {
+                float:left;
+                width: 428px;
+                margin: 20px;
+            }
+            
+            .top_row
+            {
+                width:372px;
+                height:190px;
+                padding:20px;
+                border: 8px solid powderblue;
+                border-radius:10px;
+                background-color:azure;
+            }
+            
+            .bottom_row
+            {
+                width: 372px;
+                height:120px;
+                padding:20px;
+                margin: 20px 0 0 0;
+                border:8px solid powderblue;
+                border-radius: 10px;
+                background-color: azure;
+            }
+            
+            .left_column
+            {
+                float:left;
+                padding:20px;
+                margin:20px;
+                height:390px;
+                width:241px;
+                border: 8px solid powderblue;
+                border-radius: 10px;
+                background-color:azure;
+                
+            }
+            
+            .right_column
+            {
+              float:left;
+              padding:20px;
+              margin:20px;
+              height: 390px;
+              width: 200px;
+              border: 8px solid powderblue;
+              border-radius: 10px;
+              background-color:azure;
+            }
+            
+            @keyframes fill_up
+            {
+                0% {transform: scaleY(0); transform-origin: bottom; background-color:chartreuse;}
+                50% {transform: scaleY(50%); transform-origin:bottom;background-color:aqua;}
+                100% {transform: scaleY(100%); transform-origin:bottom;}
+            }
+            
+            @keyframes drops
+            {
+                0% {top:0px;}
+                100% {top:500px;}
+            }
+            
+            .fluid
+            {
+                width: inherit;
+                height: 550px;
+                background-color:dodgerblue;
+                border-radius:10px;
+                position:absolute;
+                z-index:-1;
+                animation-name: fill_up;
+                animation-duration:10s;
+            }
+            
+            .drop
+            {
+              width: 2px;
+              height: 50px;
+              border-radius: 20px;
+              position: absolute;
+              z-index: -1;
+              background-color:dodgerblue;
+            }
+            
+            .position1
+            {
+                right:1000px;
+                animation: drops 1s;
+                animation-iteration-count: 10;
+            }
+            
+            .position2
+            {
+                right:600px;
+                animation: drops 0.5s;
+                animation-iteration-count: 18;
+            }
+            
+            .position3
+            {
+                right: 700px;
+                animation: drops 1s;
+                animation-iteration-count: 10;
+            }
+            
+            .position4
+            {
+                right:800px;
+                animation: drops 0.5s;
+                animation-iteration-count: 18;
+            }
+            
+            .position5
+            {
+                right: 300px;
+                animation: drops 1s;
+                animation-iteration-count: 10;
+            }
+            
+            .position6
+            {
+                right: 650px;
+                animation: drops 0.5s;
+                animation-iteration-count: 18;
+            }
+            
+            .position7
+            {
+                right: 1200px;
+                animation: drops 1s;
+                animation-iteration-count: 10;
+            }
+            ul
+            {
+                list-style-type:none;
+            }
+            
+            body
+            {
+              background-image:url(landscape-sky-clouds.jpg);
+              /* Citation: Tong, Donald. White Clouds and Blue Sky. 2 Aug. 2015. */ 
+              background-repeat: no-repeat;
+              background-position: top;
+              background-size:auto;
+            }
+            
+            p
+            {
+                background-color:white;
+                width:200px;
+                border-radius: 20px;
+                padding: 5px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <!-- Main wrapper. This div should wrap all columns, row wrapper, and title header -->
+        <div id="main_wrapper" class="clear">
+            <div class="fluid"></div>
+                    <div class="position1 drop"></div>
+            <div class="position2 drop"></div>
+            <div class="position3 drop"></div>
+            <div class="position4 drop"></div>
+            <div class="position5 drop"></div>
+            <div class="position6 drop"></div>
+            <div class="position7 drop"></div>
+        
+            <h2 class="centered">Skills</h2>
+            <!-- Left Column -->
+            <!-- Put left column physical width calculations here: 
+
+                Physical left column width = 
+                    241px -> content width
+                     40px  -> padding (20 left, 20 right)
+                     40px  -> margin (20 left, 20 right)
+                     16px  -> border (8 left, 8 right)
+                --------------------
+                    337px
+
+            -->
+            <div class="left_column">
+            <h3>Languages</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>C/C++</li>
+                    <li>JavaScript</li>
+                    <li>PHP</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            
+            <!-- Row Wrapper. This div will contain two rows -->
+            <!--Put middle column physical width calculations here:
+
+                Physical middle column width = 
+                    428px -> content width
+                     40px  -> margin (20 left, 20 right)
+                --------------------
+                    468px
+            -->
+            <div class="row_wrapper">
+                <div class="top_row">
+                <h3>Coursework</h3>
+                    <ul>
+                        <li>Software and Algorithm Design</li>
+                        <li>Software Engineering</li>
+                        <li>Object Oriented Programming</li>
+                        <li>Database Management</li>
+                        <li>Artificial Intelligence</li>
+                        <li>Computational Intelligence</li>
+                        <li>Cloud Computing</li>
+                        <li>Operating Systems</li>
+                    </ul>
+                </div>
+                <div class="bottom_row">
+                <h3>Extracurricular Activities</h3>
+                    <ul>
+                        <li>PickHacks Hackathon</li>
+                        <li>TigherHacks Hackathon</li>
+                        <li>UPE Organization Web Development</li>
+                        <li>Java based Convolutional Neural Network</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <!--Put right column physical width calculations here: 
+                  
+
+                Physical right column width = 
+                        1101 -> (wrapper width)
+                         337 -> left column width
+                         468 -> middle column width
+                --------------------
+                         296px 
+                (content width = 296 - 80 (padding and margin) - 16 (border) = 200px)
+            -->
+            <div class="right_column">
+            <h3>Technologies</h3>
+                <ul>
+                        <li>Amazon AWS</li>
+                        <li>GENI</li>
+                        <li>Postgresql</li>
+                        <li>MySQL</li>
+                    </ul>
+            </div>
+        </div>
+        <p>Last updated at: 2/6/20</p>
+    
+    </body>
+</html>

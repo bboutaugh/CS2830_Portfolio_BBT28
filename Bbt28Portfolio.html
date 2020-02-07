@@ -11,72 +11,107 @@
     <!-- HEAD -->
     <head>
         <title>Bbt28Portfolio</title>
-        <link rel="stylesheet" href="Bbt28Portfolio.css">
         <meta charset="UTF-8">
         <style>
             
         #navbar
         {
-        color:white;
-        background-color:midnightblue;
-        position:fixed;
-        left:0;
-        top:0;  
-        width:100%;
+            color:white;
+            background-color:midnightblue;
+            position:fixed;
+            left:0;
+            top:0;  
+            width:100%;
+            font-family: Verdana;
+            display:inline;
+            margin:auto;
+            float:left;
         }
         
         .name 
         {
-        margin: 10px;
-        font-family: Verdana;
-        font-size: 30px;
+            margin: 10px;
+            font-family: Verdana;
+            font-size: 30px;
+        }
+        
+        a
+        {
+            text-decoration: none;    
+        }
+            
+        a:visited
+        {
+            color:white;
+            background-color:transparent;
+            text-decoration: none;
         }
             
         .picture
         {
-        display:block;
-        position:relative;
-        margin-top: 100px;
-        margin-bottom: 50px;
-        max-width:50%;
-        max-height: 50%;
-        margin-left:auto;
-        margin-right:auto;
-        width:300px;
-        height:300px;
-            
-        /* border */
-        border: 10px solid midnightblue;
-        border-radius: 200px;
-        border-style:ridge;
+            display:block;
+            position:relative;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            max-width:50%;
+            max-height: 50%;
+            margin-left:auto;
+            margin-right:auto;
+            width:300px;
+            height:300px;
+
+            /* border */
+            border: 10px solid midnightblue;
+            border-radius: 200px;
+            border-style:ridge;
         }
         
         .header
         {
-        margin-top: 40px;
-        margin-bottom: 10px;
-        text-align: center;
-        position:relative;
-        color:midnightblue;
-        font-family: verdana;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+            position:relative;
+            color:midnightblue;
+            font-family: verdana;
         }
             
         body
         {
-        background-image:url(mountain_scenery.jpg); /*Public Domain Image*/
-        /* Citation: Martinez, Marlon. Mountain Scenery. 2 Sept. 2018. */
-        background-repeat: no-repeat;
-        background-position: top;
-        background-size:cover;
+            background-image:url(mountain_scenery.jpg); /*Public Domain Image*/
+            /* Citation: Martinez, Marlon. Mountain Scenery. 2 Sept. 2018. */
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size:cover;
         }
         
         p
         {
-        text-align: center;
-        font-size: 20px;
-        font-family:verdana;
-        color:midnightblue;
+            text-align: center;
+            font-size: 20px;
+            font-family:verdana;
+            color:midnightblue;
         }
+        
+        ul
+        {
+          list-style-type: none;
+          margin: 10px;
+            
+        }
+            
+        li a
+            {
+             float:left;
+             text-decoration: none;
+             display: block;
+             text-align: center;
+             padding: 10px;
+            }
+            
+            li{
+                float: left;
+            }
         </style>
       
     </head>
@@ -84,9 +119,10 @@
     <!-- BODY -->
     <body>
         <div id="navbar">
-            <h2 class="name">
-            Brad Boutaugh
-            </h2>
+                 <ul>
+                     <li><a href="Bbt28Portfolio.html">Brad Boutaugh</a></li>
+                     <li><a href="Bbt28Columns.html">Skills</a></li>
+                </ul>
         </div>
         
         <img src="profile_pic.jpg" class="picture" alt="Brad Boutaugh"> 
