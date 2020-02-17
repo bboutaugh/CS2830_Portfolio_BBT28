@@ -3,7 +3,7 @@
 <!--
     Name: Brad Boutaugh
     Pawprint: BBT28
-    Date: 2/15/20
+    Date: 2/13/20
     Challenge 4: Tables Spring 2020
 -->
 
@@ -13,9 +13,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet"> 
         <style>
             /*NAVBAR CSS*/
-            .navbar
+            .nav
             {
                 width:100%;
                 top:0;
@@ -26,17 +28,17 @@
                 overflow:hidden;
             }
         
-            .navbar a
+            .nav a
             {
+              float: left;
               font-family: Verdana;
               color:white;
-              float: left;
               text-align:center;
               text-decoration: none;
               padding: 10px 20px;
             }
             
-            .navbar a:hover
+            .nav a:hover
             {
                color:midnightblue;
                background-color:aliceblue;
@@ -44,41 +46,120 @@
             
             .filler
             {
-                height:75px;
+                height:40px;
             }
             /*end NAVBAR CSS*/
             
+            /*TABLE CSS*/
             .logo
             {
-                width="150px";  
+                width:150px;  
             }
             
-        
+            .cs_bg
+            {
+                background-color:powderblue;
+            }
+            
+            .mth_bg
+            {
+                background-color:aquamarine;
+            }
+            
+            .stat_bg
+            {
+                background-color: chartreuse;
+            }
+            
+            
+            * {
+                font-family:'Abel', 'Arial', sans-serif;
+            }
+            /*end TABLE CSS*/
+            
+            /*CARD CSS*/
+            #card
+            {
+                border:5px solid;   
+                box-shadow: 5px 10px;
+                width:50%;
+                margin:auto;
+            }
+            
+            
+            .profile
+            {
+                border:5px solid;
+                margin:10px;
+                width:90%;
+            }
+            
+            .card_col1
+            {
+                float:left;
+                display:inline-block;
+                width:30%;
+            }
+            .card_col2
+            {
+                float:left;
+                width:30%;
+                display:inline-block;
+                text-align: center;
+            }
+            
+            .card-col3
+            {
+                float:left;
+                 width:40%;
+                display:inline-block;
+                text-align:center;
+            }
+            /*end CARD CSS*/
+            
+            .clear::after{
+                content:"";
+                display:table;
+                clear:both;
+            }
+            
+            .title
+            {
+              font-size:30px;
+              text-align: center;
+            }
+            
+            .institution
+            {
+              width:auto;
+              text-align:right;
+            }
+            
         </style>
     </head>
 
     <body>
         <!--NAVBAR-->
-         <div class="navbar">
+         <div class="nav">
             <a href="Bbt28Portfolio.html">Brad Boutaugh</a>
             <a href="Bbt28Columns.html">Skills</a>
             <a href="Bbt28TablesS20.html">Classes Taken</a>
         </div>
         
-        <div class="filler"> </div>
+       <div class="filler"> </div>
         
         <!--TABLE-->
         <table class="table">
             <thead>
                 <!--THead Row 1-->
-                <tr>
+                <tr class="title">
                     <th colspan="5">Classes Taken</th>
                 </tr>
                 <!--THead Row 2-->
                 <tr>
                     <th><img src="mu_tiger.png" alt="mizzou logo" class="logo"></th>
                     <!--Citation: University of Missouri. Main Logo. 2020. -->
-                    <th>University of Missouri</th>
+                    <th colspan="4" class="institution">University of Missouri - Columbia</th>
                 </tr>
                 <!--Thead Row 3-->
                 <tr>
@@ -94,16 +175,15 @@
             <!--CS Courses-->
                 <!--Advanced Algorithm Design CS3050-->
                 <tr>
-                    <td>Computer Science</td>
+                    <td rowspan="7" class="cs_bg">Computer Science</td>
                     <td>Advanced Algorithm Design</td>
                     <td>CS 3050</td>
                     <td>This class surveys fundamental algorithms and data structures that have wide practical applicability, including search trees and graph algorithms.  Emphasis is placed on techniques for efficient implementation and good software development methodologies.</td>
-                    <td>Implementation of various search trees and graphs within the C language</td>
+                    <td>Implementation of various search trees and graphs within the C language.</td>
                 </tr>
                 
                 <!--Software Engineering CS4320-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Software Engineering</td>
                     <td>CS 4320</td>
                     <td> Overview of software life cycle, including topics in systems analysis and requirements specification, design, implementation testing and maintenance.  Uses modeling techniques, project management, peer review, quality assurance, and system acquisition.</td>
@@ -112,7 +192,6 @@
                         
                 <!--Object Oriented Engineering CS3330-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Object Oriented Engineering</td>
                     <td>CS 3330</td>
                     <td>This course focuses on object-oriented programming concepts:  abstraction, polymorphism, encapsulation, inheritance, interfaces, abstract classes, files, streams, and object serialization.  Topics such as GUI and event-driven programming are also tackled.</td>
@@ -121,7 +200,6 @@
                 
                 <!--Database Applications CS3380-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Database Applications</td>
                     <td>CS 3380</td>
                     <td>Covers fundamental topics of database management systems (DBMS) and database-enabled applications.  Topics include a brief history of secondary storage and databases, data modeling, introductory SQL, an overview of current database trends, and current popular database systems.</td>
@@ -130,7 +208,6 @@
                 
                 <!--Cloud Computing CS4530-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Cloud Computing</td>
                     <td>CS 4530</td>
                     <td> This course covers principles that integrate computing theories and information technologies with the design, programming and application of distributed systems. The course topics will familiarize students with distributed system models and enabling technologies; virtual machines and virtualization of clusters, networks and data centers; cloud platform architecture with security over virtualized data centers; service- oriented architectures for distributed computing; and cloud programming and software environments.</td>
@@ -139,7 +216,6 @@
                 
                 <!--Computational Intelligence CS4770-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Introduction to Computational Intelligence</td>
                     <td>CS 4770</td>
                     <td> Introduction to the concepts, models and algorithms for the development of intelligent systems from the standpoint of the computational paradigms of neural networks, fuzzy set theory and fuzzy logic, evolutionary computation and swarm optimization.</td>
@@ -148,17 +224,16 @@
                 
                 <!--Artificial Intelligence CS4750-->
                 <tr>
-                    <td>Computer Science</td>
                     <td>Artificial Intelligence</td>
                     <td>CS 4750</td>
                     <td> Introduction to the concepts and theories of intelligent systems. Various approaches to creating intelligent systems, including symbolic and computational approaches, insight into the philosophical debates important to understanding AI.</td>
-                    <td>Implemented dynamic search algorithms and adversarial AI</td>
+                    <td>Implemented dynamic search algorithms and adversarial AI.</td>
                 </tr>
                 
             <!--Math Course-->
                 <!--Calculus MATH2300-->
                 <tr>
-                    <td>Math</td>
+                    <td class="mth_bg">Math</td>
                     <td>Calculus</td>
                     <td>MATH 2300</td>
                     <td>Vectors, solid analytic geometry, calculus of several variables.  Math Reasoning Proficiency course.</td>
@@ -168,7 +243,7 @@
             <!--Statistics Course-->
                 <!--Mathematical Statistics STAT4710-->
                 <tr>
-                    <td>Statistics</td>
+                    <td class="stat_bg">Statistics</td>
                     <td>Mathematical Statistics</td>
                     <td>STAT 4710</td>
                     <td> Introduction to theory of probability and statistics using concepts and methods of calculus.</td>
@@ -176,6 +251,29 @@
                 </tr>
             </tbody>
         </table>
+        
+        <!--CARD-->
+        <div id="card" class="clear">
+            <!--Card Column 1-->
+            <div class="card_col1">
+                <img src="profile_pic.jpg" alt="Brad Boutaugh" class="profile"> 
+            </div>
+            <!--Card Column 2-->
+            <div class="card_col2">
+                <h2>Brad Boutaugh</h2>
+                <hr>
+                <h4>Computer Science | Senior</h4>
+                <h4>Current Total Credits: 207 h</h4>
+            </div>
+            <!--Card Column 3-->
+            <div class="card_col3">
+                <h2>Info</h2>
+                <hr>
+                <h4>email: bbt28@mail.missouri.edu</h4>
+                <h4>github: https://github.com/bboutaugh</h4>
+            </div>
+        
+        </div>
 
     </body>
 </html>
