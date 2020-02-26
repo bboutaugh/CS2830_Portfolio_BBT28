@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<!--
+    Name: Brad Boutaugh
+    Pawprint: BBT28
+    Date: 02/26/20
+    Challenge: To-Do List S20
+-->
+
+<html lang="en-US">
+    <head>
+        <title>Bbt28ToDoListS20</title>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet"> 
+        <style>
+            .heading
+            {
+                width:100%;
+                text-align:center;
+                font-family: 'Oxanium', Arial;
+            }
+            .todo_container
+            {
+                display:flex;
+                margin:auto;
+            }
+            .column_container
+            {
+                float:left;
+                width:500px;
+                height:400px;
+                font-family: 'Oxanium', Arial;
+                text-align: center;
+                border: 2px solid midnightblue;
+            }
+            
+            .column_container h2{
+                background-color:aliceblue;
+            }
+            
+            .todo_form
+            {
+                width:75%;
+                padding-bottom:50px;
+                margin-bottom:100px;
+                margin-top:50px;
+                margin-left:auto;
+                margin-right:auto;
+                text-align: center;
+                border:2px solid midnightblue;
+            }
+            
+            .todo_form h3{
+               font-family: 'Oxanium', Arial; 
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <script>
+           class Task
+            {
+                constructor(title, type, date, action)
+                {
+                    this.title = title;
+                    this.type = type;
+                    this.date = date;
+                    this.action = action;
+                }
+                
+                get titleVal()
+                {
+                    return this.title;
+                }
+                get typeVal()
+                {
+                    return this.type;
+                }
+                get dateVal()
+                {
+                    return this.date;
+                }
+                get actionVal()
+                {
+                    return this.action;
+                }
+                
+            }
+        </script>
+        <a href="">Back to Projects</a>
+        
+        <h1 class="heading">To-Do List</h1>
+        
+        <!--To-Do Items Container -->
+        <div class="todo_container">
+            <div class="column_container"><h2>Title</h2></div>
+            <div class="column_container"><h2>Type</h2></div>
+            <div class="column_container"><h2>Date</h2></div>
+            <div class="column_container"><h2>Action</h2></div>
+        </div>
+        
+        <!--Form Container -->
+        <div class="todo_form">
+            <h3>Add to To-do List</h3>
+            <form>
+            <input type="text" id="task_title" name="title" placeholder="Title">
+            <select id="task_type" name="type">
+                <option value="school">School</option>
+                <option value="work">Work</option>
+                <option value="home">Home</option>
+                <option value="misc">Miscellaneous</option>
+            </select>
+                <input type="date" id="date">
+                <input type="button" value="Submit Form">
+                <input type="button" value="Clear Form">
+            </form>
+        </div>
+    </body>
+
+</html>
