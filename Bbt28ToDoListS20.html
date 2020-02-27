@@ -23,6 +23,8 @@
             {
                 display:flex;
                 margin:auto;
+                overflow:auto;
+                border:2px solid black;
             }
             .column_container
             {
@@ -31,7 +33,6 @@
                 height:400px;
                 font-family: 'Oxanium', Arial;
                 text-align: center;
-                border: 2px solid midnightblue;
             }
             
             .column_container h2{
@@ -47,75 +48,182 @@
                 margin-left:auto;
                 margin-right:auto;
                 text-align: center;
-                border:2px solid midnightblue;
+                border:2px solid black;
             }
             
             .todo_form h3{
                font-family: 'Oxanium', Arial; 
             }
             
+            body
+            {
+                background-image: url(alarm_clock_white.jpg);/*Public Domain*/
+                 /* Citation: Ales, Krivec. Gray Analog Clock Displaying at 10:36. 9 Aug. 2017. */
+                /*Edited by Brad Boutaugh*/
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            .switch
+            {
+                position:relative;
+                display:inline-block;
+                width:60px;
+                height:34px;
+            }
+            
+            .switch input
+            {
+                opacity:0;
+                width:0;
+                height:0;
+            }
+            
+            .slider
+            {
+                position:absolute;
+                cursor: pointer;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                background-color:black;
+                -webkit-transition: .2s;
+                transition: .2s;
+                border-radius: 34px;
+            }
+            
+            .slider:before
+            {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left:4px;
+                bottom:4px;
+                background-color:white;
+                -webkit-transition:.2s;
+                transition:.2s; 
+                border-radius:50%;
+            }
+            
+            input:checked + .slider 
+            {
+                background-color: white;
+            }
+            
+            input:focus + .slider
+            {
+                box-shadow:0 0 1px black;
+            
+            }
+            
+            input:checked + .slider:before
+            {
+                -webkit-transform:translateX(26px);
+                -ms-transform: translateX(26px);
+                transform:translateX(26px);
+                background-color:black;
+            }
         </style>
+    
     </head>
     
+    <!--BODY-->
     <body>
-        <script>
-           class Task
-            {
-                constructor(title, type, date, action)
-                {
-                    this.title = title;
-                    this.type = type;
-                    this.date = date;
-                    this.action = action;
-                }
-                
-                get titleVal()
-                {
-                    return this.title;
-                }
-                get typeVal()
-                {
-                    return this.type;
-                }
-                get dateVal()
-                {
-                    return this.date;
-                }
-                get actionVal()
-                {
-                    return this.action;
-                }
-                
-            }
-        </script>
+        <label class="switch">
+            <input type="checkbox" id="toggle" onclick="changeBG()">
+            <span class="slider" ></span>
+        </label>
+        
         <a href="">Back to Projects</a>
         
-        <h1 class="heading">To-Do List</h1>
+        <h1 class="heading" id="todo_title">To-Do List</h1>
         
         <!--To-Do Items Container -->
-        <div class="todo_container">
-            <div class="column_container"><h2>Title</h2></div>
-            <div class="column_container"><h2>Type</h2></div>
-            <div class="column_container"><h2>Date</h2></div>
-            <div class="column_container"><h2>Action</h2></div>
+        <div class="todo_container" id="container">
+            <div class="column_container" id="title_col"><h2>Title</h2></div>
+            <div class="column_container" id="type_col"><h2>Type</h2></div>
+            <div class="column_container" id="date_col"><h2>Date</h2></div>
+            <div class="column_container" id="action_col"><h2>Action</h2></div>
         </div>
         
         <!--Form Container -->
-        <div class="todo_form">
+        <div class="todo_form" id="form">
             <h3>Add to To-do List</h3>
             <form>
             <input type="text" id="task_title" name="title" placeholder="Title">
             <select id="task_type" name="type">
+                <option value="">Select a type</option>
                 <option value="school">School</option>
                 <option value="work">Work</option>
                 <option value="home">Home</option>
                 <option value="misc">Miscellaneous</option>
             </select>
                 <input type="date" id="date">
-                <input type="button" value="Submit Form">
+                <input type="button" value="Submit Form" onclick="addTask()">
                 <input type="button" value="Clear Form">
             </form>
         </div>
+        
+        <script>
+            function changeBG()
+            {
+                var toggle = document.getElementById("toggle")
+                if(toggle.checked == true)
+                    {
+                        document.body.style.backgroundImage = "url(alarm_clock_black.jpg)";
+                        document.getElementById("form").style.color = "white";
+                        document.getElementById("todo_title").style.color = "white";
+                        document.getElementById("form").style.borderColor = "white";
+                        document.getElementById("container").style.border = "2px solid white";
+                    }
+                else
+                    {
+                      document.body.style.backgroundImage = "url(alarm_clock_white.jpg)";  
+                      document.getElementById("form").style.color = "black";
+                      document.getElementById("todo_title").style.color = "black"; 
+                       document.getElementById("form").style.border = "2px solid black";
+                       document.getElementById("container").style.border = "2px solid black";
+                    }
+               
+            }
+            
+            function addTask()
+            {
+                var para = document.createElement("p");
+                var para2 = document.createElement("p");
+                var para3 = document.createElement("p");
+                var para4 = document.createElement("IMG")
+                para4.setAttribute("src","check_mark.png");
+            
+                var title = document.getElementById("task_title");
+                var type = document.getElementById("task_type");
+                var date = document.getElementById("date");
+                
+
+                var node = document.createTextNode(title.value);
+                var node2 = document.createTextNode(type.value);
+                var node3 = document.createTextNode(date.value);
+                
+                
+                para.appendChild(node);
+                var element = document.getElementById("title_col");
+                element.appendChild(para);
+                
+                para2.appendChild(node2);
+                var element2 = document.getElementById("type_col");
+                element2.appendChild(para2);
+                
+                para3.appendChild(node3);
+                var element3 = document.getElementById("date_col");
+                element3.appendChild(para3);
+                
+                var element4 = document.getElementById("action_col");
+                element4.appendChild(para4);
+            }
+                
+        </script>
     </body>
 
 </html>
