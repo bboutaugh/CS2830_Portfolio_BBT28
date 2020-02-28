@@ -19,21 +19,37 @@
                 text-align:center;
                 font-family: 'Oxanium', Arial;
             }
+            
             .todo_container
             {
                 display:flex;
+                position:relative;
                 margin:auto;
-                overflow:auto;
+                height:400px;
+                width:90%;
                 border:2px solid black;
+            }
+            
+            .header_container
+            {
+                width:90%;
+                display:flex;
+                margin:auto;
+                position:relative;
+                
+    
             }
             .column_container
             {
                 float:left;
-                width:500px;
-                height:400px;
+                width:24.7%;
+                height:50px;
                 font-family: 'Oxanium', Arial;
                 text-align: center;
+                border: 2px solid black;
             }
+            
+            
             
             .column_container h2{
                 background-color:darkgray;
@@ -70,6 +86,36 @@
                 background-size: cover;
             }
             
+            .task_list
+            {
+                border:2px solid red;
+                overflow: auto;
+                width:100%;
+                height:auto;
+            }
+            
+            .task
+            {
+                display:flex;
+                float:left;
+                position:relative;
+                border: 2px solid blue;
+                width:100%;
+                font-family:"Oxanium",arial;
+            }
+            
+            .task_item
+            {
+                width:25%;
+                border:2px solid green;
+                text-align: center;
+            }
+            
+            .check
+            {
+                width:30px;
+            }
+            
             /*“How TO - Toggle Switch.” How To Create a Toggle Switch, www.w3schools.com/howto/howto_css_switch.asp.*/
             .switch
             {
@@ -85,6 +131,7 @@
                 width:0;
                 height:0;
             }
+            
             
             .slider
             {
@@ -148,7 +195,7 @@
         <h1 class="heading" id="todo_title">To-Do List</h1>
         
         <!--To-Do Items Container -->
-        <div class="todo_container" id="container">
+        <div class="header_container">
             <div class="column_container" id="title_col"><h2>Title</h2><div id="title_elem"></div></div>
             <div class="column_container" id="type_col"><h2>Type</h2><div id="type_elem"></div></div>
             <div class="column_container" id="date_col"><h2>Date</h2><div id="date_elem"></div></div>
@@ -156,29 +203,30 @@
                 <h2>Action</h2>
                 <div class="action_div" id="action_elem"></div>
             </div>
+            </div>
+        <div class="todo_container" id="container">
+            <div class="task_list" id="tl"></div>
         </div>
         
         <!--Form Container -->
         <div class="todo_form" id="form">
             <h3>Add to To-do List</h3>
             <form>
-            <input type="text" id="task_title" name="title" placeholder="Title" required>
-            <select id="task_type" name="type" required>
+            <input type="text" id="task_title" name="title" placeholder="Title">
+            <select id="task_type" name="type">
                 <option value="">Select a type</option>
                 <option value="school">School</option>
                 <option value="work">Work</option>
                 <option value="home">Home</option>
                 <option value="misc">Miscellaneous</option>
             </select>
-                <input type="date" id="date" required>
-                <input type="submit" value="Submit Form" onclick="addTask()">
+                <input type="date" id="date">
+                <input type="button" value="Submit Form" onclick="addTask()">
                 <input type="button" value="Clear Form" onclick="clearTasks()">
             </form>
         </div>
         
         <script>
-            
-            var arr = [];
             function changeBG()
             {
                 var toggle = document.getElementById("toggle")
@@ -207,83 +255,60 @@
             
             function addTask()
             {
-       
-                    var para = document.createElement("p");
-                    para.setAttribute("font-size","30px");
-                    var para2 = document.createElement("p");
-                    para2.setAttribute("font-size","30px");
-                    var para3 = document.createElement("p");
-                    var para4 = document.createElement("IMG");
-                    para4.onclick = removeTask;
-                    para4.setAttribute("src","check_mark.png");/*Public Domain*/
-                    para4.setAttribute("display","inline-block");
-                    para4.setAttribute("width","30px");
+                    var divElem = document.createElement("div");
+                    divElem.setAttribute("class","task");
+                
+                    var div1 = document.createElement("div");
+                    div1.setAttribute("class","task_item");
+                
+                    var div2 = document.createElement("div");
+                    div2.setAttribute("class","task_item");
+                
+                    var div3 = document.createElement("div");
+                    div3.setAttribute("class","task_item");
+        
+                    var checkmark = document.createElement("IMG");
+                    checkmark.onclick = removeTask;
+                    checkmark.setAttribute("src","check_mark.png");/*Public Domain*/
+                    checkmark.setAttribute("class","check");
+                
+                    var div4 = document.createElement("div");
+                    div4.setAttribute("class","task_item"); 
+                
+                
                     var title = document.getElementById("task_title");
                     var type = document.getElementById("task_type");
                     var date = document.getElementById("date");
-                
 
                     var node = document.createTextNode(title.value);
                     var node2 = document.createTextNode(type.value);
                     var node3 = document.createTextNode(date.value);
-
-
-                    para.appendChild(node);
-                    var element = document.getElementById("title_elem");
-                    element.appendChild(para);
-
-                    para2.appendChild(node2);
-                    var element2 = document.getElementById("type_elem");
-                    element2.appendChild(para2);
-
-                    para3.appendChild(node3);
-                    var element3 = document.getElementById("date_elem");
-                    element3.appendChild(para3);
-
-                    var element4 = document.getElementById("action_elem");
-                    element4.appendChild(para4);
+                    
+                    div1.appendChild(node);
+                    div2.appendChild(node2);
+                    div3.appendChild(node3);
+                    div4.appendChild(checkmark);
                 
-                    task_arr = new Array(para, para2, para3, para4);
-                    arr.push(task_arr);
+                    divElem.appendChild(div1);
+                    divElem.appendChild(div2);
+                    divElem.appendChild(div3);
+                    divElem.appendChild(div4);
+                    var mainDiv = document.getElementById("tl");
+                    mainDiv.appendChild(divElem);
                 
             }
             
             function clearTasks()
             {
-                var title_elem = document.querySelector("#title_elem");
-                var title_node = title_elem.lastElementChild;
+                var div_elem = document.getElementById("tl");
+                /*var div_node = div_elem.lastElementChild;
                 
-                var type_elem = document.querySelector("#type_elem");
-                var type_node = type_elem.lastElementChild;
-                
-                var date_elem = document.querySelector("#date_elem");
-                var date_node = date_elem.lastElementChild;
-                
-                var action_elem = document.querySelector("#action_elem");
-                var action_node = action_elem.lastElementChild;
-                
-                while(title_node)
+                while(div_node)
                     {
-                        title_elem.removeChild(title_node);
-                        title_node = title_elem.lastElementChild;
-                    }
-                while(type_node)
-                    {
-                       type_elem.removeChild(type_node);
-                       type_node = type_elem.lastElementChild; 
-                    }
-                        
-                while(date_node)
-                    {
-                       date_elem.removeChild(date_node);
-                       date_node = date_elem.lastElementChild; 
-                    }
-                        
-                while(action_node)
-                    {
-                      action_elem.removeChild(action_node);
-                        action_node = action_elem.lastElementChild;  
-                    } 
+                        div_elem.removeChild(div_node);
+                        div_node = div_elem.lastElementChild;
+                    }*/
+                div_elem.innerHTML = '';
             }   
             
             
