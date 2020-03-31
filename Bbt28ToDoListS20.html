@@ -3,15 +3,22 @@
 <!--
     Name: Brad Boutaugh
     Pawprint: BBT28
-    Date: 02/26/20
-    Challenge: To-Do List S20
+    Date: 3/19/2020
+    Challenge: Web Servers S20
 -->
 
 <html lang="en-US">
+    <!--HEAD-->
     <head>
-        <title>Bbt28ToDoListS20</title>
+        <title>To-Do List</title>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet"> 
+        
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"> 
+        
+        <link href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap" rel="stylesheet"> 
+        
+        <!--CSS-->
         <style>
             .heading
             {
@@ -36,9 +43,8 @@
                 display:flex;
                 margin:auto;
                 position:relative;
-                
-    
             }
+            
             .column_container
             {
                 float:left;
@@ -46,10 +52,7 @@
                 height:50px;
                 font-family: 'Oxanium', Arial;
                 text-align: center;
-                border: 2px solid black;
             }
-            
-            
             
             .column_container h2{
                 background-color:darkgray;
@@ -88,7 +91,6 @@
             
             .task_list
             {
-                border:2px solid red;
                 overflow: auto;
                 width:100%;
                 height:auto;
@@ -99,21 +101,46 @@
                 display:flex;
                 float:left;
                 position:relative;
-                border: 2px solid blue;
                 width:100%;
-                font-family:"Oxanium",arial;
+                font-family:"Oxanium", arial;
             }
             
             .task_item
             {
                 width:25%;
-                border:2px solid green;
                 text-align: center;
             }
             
             .check
             {
                 width:30px;
+            }
+            
+            .light_mode
+            {
+                color:black;
+                font-family: 'Indie Flower', arial;
+                font-size:20px;
+                margin-left:5px;
+                display:inline-block;
+            }
+            
+            .dark_mode
+            {
+               color:lightgray;
+               font-family: 'Freckle Face', arial;
+               font-size:20px;
+               margin-left: 5px;
+                display:inline-block;
+            }
+            
+            .projects
+            {
+                float:right;
+                text-decoration: none;
+                font-family: arial, sans-serif;
+                margin-left: 5px;
+                display:inline-block;
             }
             
             /*“How TO - Toggle Switch.” How To Create a Toggle Switch, www.w3schools.com/howto/howto_css_switch.asp.*/
@@ -123,6 +150,7 @@
                 display:inline-block;
                 width:60px;
                 height:34px;
+                display:inline-block;
             }
             
             .switch input
@@ -135,6 +163,7 @@
             
             .slider
             {
+                display:inline-block;
                 position:absolute;
                 cursor: pointer;
                 top:0;
@@ -145,6 +174,7 @@
                 -webkit-transition: .2s;
                 transition: .2s;
                 border-radius: 34px;
+                float:left;
             }
             
             .slider:before
@@ -169,7 +199,6 @@
             input:focus + .slider
             {
                 box-shadow:0 0 1px black;
-            
             }
             
             input:checked + .slider:before
@@ -185,14 +214,17 @@
     
     <!--BODY-->
     <body>
+        
         <label class="switch">
             <input type="checkbox" id="toggle" onclick="changeBG()">
             <span class="slider" ></span>
         </label>
+        <h3 class="light_mode" id="mode_label">Light Mode</h3>
         
-        <a href="">Back to Projects</a>
+        <a href="Bbt28ProjectsS20.html" class="projects">Back to Projects</a>
         
-        <h1 class="heading" id="todo_title">To-Do List</h1>
+        
+        <h1 class="heading" id="todo_title" ondblclick="changeHeading()">To-Do List</h1>
         
         <!--To-Do Items Container -->
         <div class="header_container">
@@ -226,6 +258,7 @@
             </form>
         </div>
         
+        <!--JAVASCRIPT-->
         <script>
             function changeBG()
             {
@@ -240,18 +273,21 @@
                         document.getElementById("form").style.borderColor = "white";
                         document.getElementById("container").style.border = "2px solid white";
                         document.getElementById("container").style.color = "white";
+                        document.getElementById("mode_label").className = "dark_mode";
+                        document.getElementById("mode_label").textContent = "Dark Mode";
                     }
                 else
                     {
                       document.body.style.backgroundImage = "url(alarm_clock_white.jpg)";  
                       document.getElementById("form").style.color = "black";
-                      document.getElementById("todo_title").style.color = "black"; 
                       document.getElementById("form").style.border = "2px solid black";
+                      document.getElementById("todo_title").style.color = "black"; 
                       document.getElementById("container").style.border = "2px solid black";
                       document.getElementById("container").style.color = "black";
+                      document.getElementById("mode_label").className = "light_mode";
+                      document.getElementById("mode_label").textContent = "Light Mode";
                     }
             }
-            
             
             function addTask()
             {
@@ -279,43 +315,57 @@
                     var title = document.getElementById("task_title");
                     var type = document.getElementById("task_type");
                     var date = document.getElementById("date");
+                
+                    if(title.value.length != 0 && type.value.length != 0 && date.value.length != 0)
+                        {
+                        var node = document.createTextNode(title.value);
+                        var node2 = document.createTextNode(type.value);
+                        var node3 = document.createTextNode(date.value);
 
-                    var node = document.createTextNode(title.value);
-                    var node2 = document.createTextNode(type.value);
-                    var node3 = document.createTextNode(date.value);
-                    
-                    div1.appendChild(node);
-                    div2.appendChild(node2);
-                    div3.appendChild(node3);
-                    div4.appendChild(checkmark);
-                
-                    divElem.appendChild(div1);
-                    divElem.appendChild(div2);
-                    divElem.appendChild(div3);
-                    divElem.appendChild(div4);
-                    var mainDiv = document.getElementById("tl");
-                    mainDiv.appendChild(divElem);
-                
+                        div1.appendChild(node);
+                        div2.appendChild(node2);
+                        div3.appendChild(node3);
+                        div4.appendChild(checkmark);
+
+                        divElem.appendChild(div1);
+                        divElem.appendChild(div2);
+                        divElem.appendChild(div3);
+                        divElem.appendChild(div4);
+                        var mainDiv = document.getElementById("tl");
+                        mainDiv.appendChild(divElem);  
+                        }
+                else{
+                    alert("Please fill out all form entries.");
+                }
             }
             
             function clearTasks()
             {
                 var div_elem = document.getElementById("tl");
-                /*var div_node = div_elem.lastElementChild;
-                
-                while(div_node)
-                    {
-                        div_elem.removeChild(div_node);
-                        div_node = div_elem.lastElementChild;
-                    }*/
                 div_elem.innerHTML = '';
             }   
             
             
             function removeTask()
             {
-                
-                
+                this.parentElement.parentElement.innerHTML = '';
+            }
+            
+            function changeHeading()
+            {
+                var headingText;
+                var changeRequest = prompt("Enter a new To-do List Title");
+                headingText = changeRequest;
+                if(headingText === "")
+                    {
+                        alert("no change");
+                    }
+                else
+                    {
+                       document.getElementById("todo_title").innerHTML = headingText;  
+                    }
+                   
+                    
             }
                 
         </script>

@@ -3,8 +3,8 @@
 <!--
     Name: Brad Boutaugh
     Pawprint: BBT28
-    Date: 2/7/20
-    Challenge 3: Multi-Column Layout
+    Date: 3/19/2020
+    Challenge: Web Servers S20
 -->
 
 <html lang="en-US">
@@ -27,7 +27,7 @@
 
             }
         
-            .navbar a
+            .tab
             {
               font-family: Verdana;
               color:white;
@@ -35,11 +35,15 @@
               text-align:center;
               text-decoration: none;
               padding: 10px 20px;
-             
             }
             
-            .navbar a:hover
+            .tab:hover
             {
+               color:midnightblue;
+               background-color:aliceblue;
+            }
+            
+             .active{
                color:midnightblue;
                background-color:aliceblue;
             }
@@ -236,10 +240,10 @@
     <body>
         <!--NAVBAR-->
         <div class="navbar">
-            <a href="Bbt28Portfolio.html">Brad Boutaugh</a>
-            <a href="Bbt28Columns.html">Skills</a>
-            <a href="Bbt28TablesS20.html">Classes Taken</a>
-            <a href="Bbt28ProjectsS20.html">Projects</a>
+            <a href="index.html" class="tab">Brad Boutaugh</a>
+            <a href="Bbt28Columns.html" class="tab active">Skills</a>
+            <a href="Bbt28TablesS20.html" class="tab">Classes Taken</a>
+            <a href="Bbt28ProjectsS20.html" class="tab">Projects</a>
         </div>
         
         <div class="filler"></div><!--Used to correct issues with main-wrapper div getting tucked under the nav bar-->
@@ -345,7 +349,25 @@
                     </ul>
             </div>
         </div>
-        <p>Last updated at: 2/7/20</p>
+        <p>Last updated at: 3/19/20</p>
+        
+        <!-- JAVASCRIPT -->
+        <script>
+        var navigation = document.getElementById("navbar");
+        var tabs = navigation.getElementsByClassName("tab");
+            for(var i = 0;i<tabs.length;i++)
+                {
+                    tabs[i].addEventListener("click", function(){
+                    var current = document.getElementsByClassName("active");
+                    if(current.length>0)
+                        {
+                            current[0].className = current[0].className.replace(" active", "");
+                        }
+                    
+                    this.className += " active"; 
+                    });   
+                }
+        </script>
     
     </body>
 </html>

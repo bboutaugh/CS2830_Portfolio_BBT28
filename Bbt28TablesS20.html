@@ -3,8 +3,8 @@
 <!--
     Name: Brad Boutaugh
     Pawprint: BBT28
-    Date: 2/13/20
-    Challenge 4: Tables Spring 2020
+    Date: 3/19/2020
+    Challenge: Web Servers S20
 -->
 
 <html lang="en-US">
@@ -28,18 +28,23 @@
                 overflow:hidden;
             }
         
-            .nav a
+            .tab
             {
-              float: left;
               font-family: Verdana;
               color:white;
+              float: left;
               text-align:center;
               text-decoration: none;
               padding: 10px 20px;
             }
             
-            .nav a:hover
+            .tab:hover
             {
+               color:midnightblue;
+               background-color:aliceblue;
+            }
+            
+             .active{
                color:midnightblue;
                background-color:aliceblue;
             }
@@ -141,10 +146,10 @@
     <body>
         <!--NAVBAR-->
          <div class="nav">
-            <a href="Bbt28Portfolio.html">Brad Boutaugh</a>
-            <a href="Bbt28Columns.html">Skills</a>
-            <a href="Bbt28TablesS20.html">Classes Taken</a>
-            <a href="Bbt28ProjectsS20.html">Projects</a>
+            <a href="index.html" class="tab">Brad Boutaugh</a>
+            <a href="Bbt28Columns.html" class="tab">Skills</a>
+            <a href="Bbt28TablesS20.html" class="tab active">Classes Taken</a>
+            <a href="Bbt28ProjectsS20.html" class="tab">Projects</a>
         </div>
         
        <div class="filler"> </div>
@@ -275,6 +280,24 @@
             </div>
         
         </div>
+        
+        <!-- JAVASCRIPT -->
+        <script>
+        var navigation = document.getElementById("nav");
+        var tabs = navigation.getElementsByClassName("tab");
+            for(var i = 0;i<tabs.length;i++)
+                {
+                    tabs[i].addEventListener("click", function(){
+                    var current = document.getElementsByClassName("active");
+                    if(current.length>0)
+                        {
+                            current[0].className = current[0].className.replace(" active", "");
+                        }
+                    
+                    this.className += " active"; 
+                    });   
+                }
+        </script>
 
     </body>
 </html>

@@ -3,8 +3,8 @@
 <!--
     Name: Brad Boutaugh
     Pawprint: BBT28
-    Date: 2/19/20
-    Challenge Flex Box S20
+    Date: 3/19/2020
+    Challenge: Web Servers S20
 -->
 
 <html lang="en-US">
@@ -24,9 +24,10 @@
                 position:fixed;
                 background-color:midnightblue;
                 overflow:hidden;
+                z-index: 3
             }
 
-            .navbar a
+            .tab
             {
               font-family: Verdana;
               color:white;
@@ -36,8 +37,13 @@
               padding: 10px 20px;
             }
             
-            .navbar a:hover
+            .tab:hover
             {
+               color:midnightblue;
+               background-color:aliceblue;
+            }
+            
+             .active{
                color:midnightblue;
                background-color:aliceblue;
             }
@@ -91,6 +97,8 @@
                font-family: 'Teko', sans-serif;
                margin-left:auto;
                margin-right:auto;
+               position:relative;
+               z-index: 1;
             }
             
             .card p 
@@ -113,6 +121,9 @@
                 color:midnightblue;
                 margin-left:auto;
                 margin-right:auto;
+                text-decoration:none;
+                position: relative;
+                z-index: 2;
             }
             
             body
@@ -133,10 +144,10 @@
     
     <body>
         <div class="navbar">
-                <a href="Bbt28Portfolio.html">Brad Boutaugh</a>
-                <a href="Bbt28Columns.html">Skills</a>
-                <a href="Bbt28TablesS20.html">Classes Taken</a>
-                <a href="Bbt28ProjectsS20.html">Projects</a>
+                <a href="index.html" class="tab">Brad Boutaugh</a>
+                <a href="Bbt28Columns.html" class="tab">Skills</a>
+                <a href="Bbt28TablesS20.html" class="tab">Classes Taken</a>
+                <a href="Bbt28ProjectsS20.html" class="tab active">Projects</a>
         </div>
         
         <div class="filler"></div>
@@ -155,13 +166,13 @@
             
             <!--Card 2 -->
             <div class="card">
-                <img src="abstract_blue.jpg" alt="abstract" class="image"><!--Public Domain-->
+                <img src="alarm_clock_black.jpg" alt="clock" class="image"><!--Public Domain-->
                 <!--Citation: Pixabay. Time Lapse Photography of Blue Lights. 16 March. 2017. -->
-                <span>Neural Network</span>
+                <span>To-Do List</span>
                 <p>
-                Multi-layered neural network built from the ground up within the Python programming language. Developed to classify the MNIST data set of hand-written numbers.
+                Web page that allows for dynamic addition and removal of detailed tasks from a to-do list. Implemented with HTML, CSS, and Javascript. Includes other such features as toggle for different page themes. 
                 </p>
-                <a>Visit</a>
+                <a href="Bbt28ToDoListS20.html">Visit</a>
             </div>
             
             <!--Card 3 -->
@@ -175,5 +186,23 @@
                 <a>Visit</a>
             </div>
         </div>
+        
+        <!-- JAVASCRIPT -->
+        <script>
+        var navigation = document.getElementById("navbar");
+        var tabs = navigation.getElementsByClassName("tab");
+            for(var i = 0;i<tabs.length;i++)
+                {
+                    tabs[i].addEventListener("click", function(){
+                    var current = document.getElementsByClassName("active");
+                    if(current.length>0)
+                        {
+                            current[0].className = current[0].className.replace(" active", "");
+                        }
+                    
+                    this.className += " active"; 
+                    });   
+                }
+        </script>
     </body>
 </html>
