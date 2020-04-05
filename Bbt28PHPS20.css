@@ -1,0 +1,33 @@
+body
+{
+    font-family: 'Baloo 2', cursive;
+}
+
+.forms
+{
+    width:70%;
+    min-height: 60vh;
+    background-color:darkseagreen;
+    border: 2px solid darkgray;
+    color: white;
+}
+
+form input
+{
+    font-family: 'Baloo 2', cursive;
+}
+
+form select
+{
+    font-family: 'Baloo 2', cursive;
+}
+
+.hidden
+{
+   margin:20px;
+   padding:5px;
+   visibility: hidden;
+   position:absolute;
+   z-index: -1;
+}
+

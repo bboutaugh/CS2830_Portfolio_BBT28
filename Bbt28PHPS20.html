@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<!--
+    name: Brad Boutaugh
+    pawprint: BBT28
+    date: 4/3/20
+    Challenge PHP S20
+-->
+
+<html lang="en-US">
+
+<!--HEAD-->
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Bbt28PHPS20</title>
+    <link rel="stylesheet" type="text/css" href="Bbt28PHPS20.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet"> 
+    
+</head>
+
+<!--BODY-->
+<body>
+    
+    <a href="Bbt28ProjectsS20.html">Back to Projects</a>
+
+    <div class="forms" title="PHP Functions">
+        <h1>PHP Functions</h1>
+        <form id="main_form">
+            <label>Function</label>
+            <select id="selections" onchange="show_form()"> 
+                <option value="" selected="true" disabled="disabled">Choose a function to run on the server.</option>
+                <option value="greeting">Greeting Function</option>
+                <option value="factorial">Factorial Function</option>
+                <option value="reverse">Reverse Function</option>
+                <option value="sum_of_squares">Sum of Squares Function</option>
+            </select>
+        </form>
+        
+        <!--GREETING Function Form-->
+        <form id="greeting_form" class="hidden" action="Bbt28PHPS20.php" method="post" target="_blank">
+            <label>First Name</label>
+            <input type="text" name="fname_input" pattern="[A-Za-z]+" required><br>
+            <label>Last  Name </label>
+            <input type="text" name="lname_input" pattern="[A-Za-z]+" required><br>
+            <input type="submit" value="Submit" name="greeting_submit">
+            <input type="reset" value="Clear">
+        </form>
+        
+        <!--FACTORIAL Function Form-->
+        <form id="factorial_form" class="hidden" action="Bbt28PHPS20.php" method="post" target="_blank">
+            <label>Number</label>
+            <input type="number" name="factorial_input" min="0" required><br>
+            <input type="submit" value="Submit" name="factorial_submit">
+            <input type="reset" value="Clear">
+        </form>
+        
+        <!--REVERSE Function Form-->
+        <form id="reverse_form" class="hidden" action="Bbt28PHPS20.php" method="post" target="_blank">
+            <label>String</label>
+            <input type="text" name="reverse_input" pattern="[A-Za-z]+" required><br>
+            <input type="submit" value="Submit" name="reverse_submit">
+            <input type="reset" value="Clear">
+        </form>
+        
+        
+        <!--SUM OF SQUARES Function Form-->
+        <form id="squares_form" class="hidden" action="Bbt28PHPS20.php" method="post" target="_blank">
+            <label>Number  1 </label>
+            <input type="number" name="squares1_input" min="0" required><br>
+            <label>Number 2</label>
+            <input type="number" name="squares2_input" min="0" required><br>
+            <input type="submit" value="Submit" name="squares_submit">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+    
+    <script src="Bbt28PHPS20.js"></script>
+
+</body>
+
+</html>
