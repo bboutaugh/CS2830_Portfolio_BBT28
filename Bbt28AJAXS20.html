@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <!--
+    name: Brad Boutaugh
+    pawprint: BBT28
+    date: 4/17/19
+    challenge: AJAX Spring 2020
+    -->
+
+<!--HEAD-->
+<head lang="en-US">
+<title>Bbt28AJAXS20</title>
+<meta charset="UTF-8">
+</head>
+
+<!--BODY-->
+<body onload="getClassInfo()">
+    
+    <!--MAIN WRAPPER-->
+    <div>
+        <!--<button onclick="getClassInfo()">Click Me!</button>-->
+        <!--HEADER DIV-->
+        <div >
+            <h1>CS/IT 2830 Dashboard</h1>
+            
+            <!--CLASS INFO-->
+            <h3 id="class_info">Server request failed...</h3>
+        </div>
+    
+        <!--CURRENT ASSIGNMENT DIV-->
+        <div>
+            <h2>Current Assignment:</h2>
+            <p id="current_assignment">Server request failed...</p>
+            <p>is due on:</p>
+            <p id="due_date">Server request failed...</p>
+        </div>
+        
+        <!--CLASS TYPE DIV-->
+        <div>
+            <h2>Class Type:</h2>
+            <p id="class_type">Server request failed...</p>
+        </div>
+           
+        <!--OFFICE INFO DIV -->
+        <div>
+            <h3>Office Hour Info:</h3>
+        </div>
+    
+    </div>
+    
+    <script>
+    //Class Info Function
+    function getClassInfo()
+        {
+            var info_xhttp = new XMLHttpRequest();
+            info_xhttp.onreadystatechange = function()
+                {
+                if(this.readyState == 4 && this.status == 200)
+                    {
+                        document.getElementById("class_info").innerHTML = this.responseText;
+                    }
+                };
+            info_xhttp.open("GET", "https://www.mizzouit.com/2830/challenge9/classInfo.php?content=info", true);
+            info_xhttp.send();
+            
+            var assignment_xhttp = new XMLHttpRequest();
+            assignment_xhttp.onreadystatechange = function()
+                {
+                if(this.readyState == 4 && this.status == 200)
+                    {
+                        var response = this.responseXML;
+                        var assignment = response.getElementsByTagName("assignmentName")[0];
+                        x = assignment.childNodes[0];
+                        document.getElementById("current_assignment").innerHTML = x.nodeValue;
+                    }
+                };
+            assignment_xhttp.open("GET", "https://www.mizzouit.com/2830/challenge9/classInfo.php?content=currentAssignment&format=xml", true);
+            assignment_xhttp.send();
+            
+            var date_xhttp = new XMLHttpRequest();
+            date_xhttp.onreadystatechange = function()
+                {
+                if(this.readyState == 4 && this.status == 200)
+                    {
+                        var response2 = this.responseXML;
+                        var date = response2.getElementsByTagName("dueDateTimestamp")[0];
+                        var y = date.childNodes[0];
+                        var js_time = new Date(y.nodeValue * 1000);
+                        document.getElementById("due_date").innerHTML = js_time;
+                    }
+                };
+            date_xhttp.open("GET", "https://www.mizzouit.com/2830/challenge9/classInfo.php?content=currentAssignment&format=xml", true);
+            date_xhttp.send();
+            
+            var type_xhttp = new XMLHttpRequest();
+            type_xhttp.onreadystatechange = function()
+                {
+                if(this.readyState == 4 && this.status == 200)
+                    {
+                        document.getElementById("class_type").innerHTML = this.responseText;
+                    }
+                };
+            type_xhttp.open("GET", "https://www.mizzouit.com/2830/challenge9/classInfo.php?content=classType", true);
+            type_xhttp.send();
+        }
+        
+    </script>
+</body>
+    
+</html>
